@@ -5,6 +5,7 @@ import RenderReview from "./RenderReview";
 function Reviews() {
 
     const [reviews, setReviews] = useState([{}])
+    let uniqueID = 0;
     
     useEffect (() => {
         getReviews().then((data) => {
@@ -14,10 +15,11 @@ function Reviews() {
 
     return (
   <>
-    <h2> All Gaming Reviews</h2>
+    <h2> Reviews</h2>
     <ul>
     {reviews.map((review) => {
-        return <li key={review.review_id}><RenderReview review={review}/></li>
+        uniqueID++;
+        return <li key={uniqueID}><RenderReview review={review}/></li>
     })}
     </ul>
   </>
