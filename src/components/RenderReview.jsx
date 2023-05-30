@@ -8,7 +8,7 @@ function RenderReview({review}) {
         return (
             <>
             <h3>{review.title}</h3>
-            <img src={review.review_img_url} alt="Relevant picture of the game being reviewed"/>
+            <img src={review.review_img_url} alt={review.title}/>
             <ul>
                 <li> {UpperCaseGameCategory} Game</li>
                 <li>Upvotes: {review.votes}</li>

@@ -5,13 +5,25 @@ import RenderReview from "./RenderReview";
 function Reviews() {
 
     const [reviews, setReviews] = useState([{}])
+    const [isLoading, setIsLoading] = useState(false)
+
     let uniqueID = 0;
     
     useEffect (() => {
+        setIsLoading(true)
         getReviews().then((data) => {
+            setIsLoading(false)
             return setReviews([...data])
         })
     }, [])
+
+    if (isLoading) {
+        return (
+        <>
+            <p>Loading reviews...</p>
+        </>
+        )
+    }
 
     return (
   <>
