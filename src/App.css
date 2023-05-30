@@ -21,3 +21,21 @@
   -webkit-text-size-adjust: 100%;
 }
 
+nav {
+  list-style: none;
+}
+
+ul {
+  list-style: none;
+}
+
+nav li {
+  display: inline;
+  padding: 0px 5px; 
+}
+
+img {
+  width: 75vw;
+  padding: 50px 0px;
+}
+
