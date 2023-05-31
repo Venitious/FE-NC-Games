@@ -7,3 +7,9 @@ export const getReviews = () => {
         return data.reviews
     })
 }
+
+export const getReviewById = (id) => {
+    return ncGamesInstance.get(`/reviews/${id}`).then(({data}) => {
+        return data.review
+    })
+}
