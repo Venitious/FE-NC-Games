@@ -13,3 +13,9 @@ export const getReviewById = (id) => {
         return data.review
     })
 }
+
+export const getCommentsByReviewId = (id) => {
+    return ncGamesInstance.get(`/reviews/${id}/comments`).then(({data}) => {
+        return data.comments
+    })
+}
