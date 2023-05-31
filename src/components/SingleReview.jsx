@@ -13,7 +13,6 @@ function SingleReview() {
         })
     }, [])
 
-    console.log(review)
     return (
     <>
     <h2>{review.title}</h2>
