@@ -4,6 +4,8 @@ import '../App.css'
 import Home from "./Home";
 import Header from "./Header";
 import Reviews from "./Reviews";
+import SingleReview from "./SingleReview";
+
 
 function App() {
 
@@ -13,6 +15,7 @@ function App() {
       <Routes>
         <Route  path = "/" element = {<Home/>} />
         <Route  path = "/reviews" element = {<Reviews/>}/>
+        <Route path = "reviews/:id" element = {<SingleReview/>}/>
       </Routes>
   </BrowserRouter>
   </>
