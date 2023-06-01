@@ -1,6 +1,10 @@
 import RenderEachComment from "./RenderEachComment";
 
-function RenderComments({comments}) { 
+function RenderComments({comments, areCommentsLoading}) { 
+
+  if (areCommentsLoading) {
+    return <p>Loading comments...</p>
+  }
 
   return (
     <section className="commentsClass">
