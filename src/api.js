@@ -19,3 +19,9 @@ export const getCommentsByReviewId = (id) => {
         return data.comments
     })
 }
+
+export const patchVotesByID = (id, votesUpdate) => {
+    return ncGamesInstance.patch(`/reviews/${id}`, votesUpdate).then(({data}) => {
+        return data.updatedReview
+    })
+}
