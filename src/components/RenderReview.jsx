@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 
 function RenderReview({review}) {
 
+
     if (review.category) {
         let lowerCaseGameCategory = review.category;
         let UpperCaseGameCategory = lowerCaseGameCategory.charAt(0).toUpperCase() + lowerCaseGameCategory.slice(1);

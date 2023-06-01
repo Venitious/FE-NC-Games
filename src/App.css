@@ -27,6 +27,7 @@ nav {
 
 ul {
   list-style: none;
+  text-align: center;
 }
 
 nav li {
@@ -44,3 +45,30 @@ img {
   padding: 0px 0px;
 }
 
+p {
+  width: 50vw;
+  text-align: justify;
+}
+
+.reviewBody {
+  text-align: justify;
+  position:relative;
+}
+
+.review {
+  display:grid;
+  place-items: center;
+}
+
+.reviewInfo {
+  text-align: left;
+}
+
+.commentHeader {
+  text-align: left;
+}
+
+.commentsClass {
+  background-color: darkgray;
+  color: black;
+}
