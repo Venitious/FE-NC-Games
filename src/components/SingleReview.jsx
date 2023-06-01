@@ -8,11 +8,9 @@ import RenderComments from './RenderComments';
 function SingleReview() {
 
     const [review, setReview] = useState({})
-    const [comments, setComments] = useState([])
+    const [comments, setComments] = useState()
     const { id } = useParams(); 
     const [isLoading, setIsLoading] = useState(false)
-    const [areCommentsLoading, setAreCommentsLoading] = useState(false)
-
 
     useEffect(() => {
         setIsLoading(true)
@@ -20,10 +18,8 @@ function SingleReview() {
             setReview({...currReview})
             setIsLoading(false)
         }).then(() => {
-            setAreCommentsLoading(true)
             getCommentsByReviewId(id).then((currComments) => {
                 setComments([...currComments])
-                setAreCommentsLoading(false)
             })
         })
     }, [])
@@ -32,12 +28,21 @@ function SingleReview() {
     if (isLoading) {
         return <p>Review Loading...</p>
     }
+    
+    if (comments === undefined) {
+        return (
+            <>
+            <RenderReviewInformation review={review}/>
+            <p>Comments are loading...</p>
+            </>
+        )
+    }
 
     if (comments.length === 0) {
         return (
         <>
         <RenderReviewInformation review={review}/>
-        <RenderNoComments areCommentsLoading={areCommentsLoading}/>
+        <RenderNoComments />
         </>
         )
     }
@@ -45,7 +50,7 @@ function SingleReview() {
     return (
         <>
         <RenderReviewInformation review={review}/>
-        <RenderComments areCommentsLoading={areCommentsLoading} comments={comments}/>
+        <RenderComments  comments={comments}/>
         </>
     )
   }

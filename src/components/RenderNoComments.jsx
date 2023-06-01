@@ -1,8 +1,6 @@
-function RenderNoComments({areCommentsLoading}) {
+function RenderNoComments() {
 
-    if (areCommentsLoading) {
-        <p>Comments loading...</p>
-    }
+
 
     return (
         <>
