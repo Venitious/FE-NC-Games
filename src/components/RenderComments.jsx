@@ -1,24 +1,17 @@
-function RenderComments({comment}) {
+import RenderEachComment from "./RenderEachComment";
 
-    const dateFormat= new Date(comment.created_at)
+function RenderComments({comments}) { 
 
-    let date = (dateFormat.getDate()+
-           "/"+(dateFormat.getMonth()+1)+
-           "/"+dateFormat.getFullYear()+
-           " "+dateFormat.getHours()+
-           ":"+dateFormat.getMinutes()+
-           ":"+dateFormat.getSeconds());
-
-    
-
-    return (
-  <>
-  <p key={comment.comment_id}>{comment.author + ":"}</p>
-  <p>{comment.body} </p>
-  <p>{date}</p>
-  <br></br>
-  </>
-    )
-  }
+  return (
+    <section className="commentsClass">
+    <h3 className="commentHeader">Comments </h3>
+    <ul>
+      {comments.map((comment) => {
+        return <li key={comment.comment_id}><RenderEachComment comment={comment}/></li>
+      })}
+    </ul>
+    </section>
+  )
+}
   
   export default RenderComments
