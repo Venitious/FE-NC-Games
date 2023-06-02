@@ -1,6 +1,9 @@
+import { useState } from "react";
+import AddComment from "./AddComment";
 import RenderEachComment from "./RenderEachComment";
 
-function RenderComments({comments}) { 
+function RenderComments({comments, setIsLoadingComment}) { 
+
 
   return (
     <section className="commentsClass">
@@ -10,6 +13,7 @@ function RenderComments({comments}) {
         return <li key={comment.comment_id}><RenderEachComment comment={comment}/></li>
       })}
     </ul>
+    <AddComment setIsLoadingComment={setIsLoadingComment} />
     </section>
   )
 }

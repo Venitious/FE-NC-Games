@@ -11,22 +11,36 @@ function SingleReview() {
     const [comments, setComments] = useState()
     const { id } = useParams(); 
     const [isLoading, setIsLoading] = useState(false)
+    const [isLoadingComment, setIsLoadingComment] = useState(false)
 
     useEffect(() => {
         setIsLoading(true)
         getReviewById(id).then((currReview) => {
             setReview({...currReview})
             setIsLoading(false)
-        }).then(() => {
-            getCommentsByReviewId(id).then((currComments) => {
-                setComments([...currComments])
-            })
         })
     }, [])
+
+    useEffect(() => {
+            getCommentsByReviewId(id).then((currComments) => {
+                setComments([...currComments])
+                setIsLoadingComment(false)
+            })
+    },[isLoadingComment])
+    
 
 
     if (isLoading) {
         return <p>Review Loading...</p>
+    }
+
+    if (isLoadingComment === true) {
+        return (
+            <>
+            <RenderReviewInformation review={review}/>
+            <p>Your comment is being added, please wait</p>
+            </>
+        )
     }
     
     if (comments === undefined) {
@@ -42,7 +56,8 @@ function SingleReview() {
         return (
         <>
         <RenderReviewInformation review={review}/>
-        <RenderNoComments />
+        <RenderNoComments setIsLoadingComment={setIsLoadingComment} />
+        
         </>
         )
     }
@@ -50,7 +65,7 @@ function SingleReview() {
     return (
         <>
         <RenderReviewInformation review={review}/>
-        <RenderComments  comments={comments}/>
+        <RenderComments setIsLoadingComment={setIsLoadingComment} comments={comments}/>
         </>
     )
   }

@@ -5,9 +5,10 @@ function Nav() {
     return (
         <>
         <nav>
-           <Link to="/">Home   </Link>
+            <Link to="/">Home   </Link>
             <Link to="/reviews">Reviews </Link>
             <Link to="/categories">Categories   </Link>
+            <Link to="/login">Login</Link>
         </nav>
         </>
     )
