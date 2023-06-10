@@ -25,3 +25,16 @@ export const patchVotesByID = (id, votesUpdate) => {
         return data.updatedReview
     })
 }
+
+export const getUsers = () => {
+    return ncGamesInstance.get('/users').then(({data}) => {
+        return data.users
+    })
+}
+
+export const postComment = (id, dataToPost) => {
+    return ncGamesInstance.post(`/reviews/${id}/comments`, dataToPost).then(({data}) => {
+        console.log(data)
+        return data.newComment
+    })
+}
